@@ -20,8 +20,8 @@ function removeFirstElement() {
 }
 
 function modifyThirdElement() {
-    // console.log(posts[2].title);
-    return posts[2].title.replace('Three', 'Four');
+    let szov = posts[2].title.replace('Three', 'Four');
+    posts[2].title = szov;
 }
 
 function createPost(post, callback_1, callback_2, callback_3) {
