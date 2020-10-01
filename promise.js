@@ -37,16 +37,37 @@ function createPost(post) {
     .then(getPosts)
     .catch(error => console.log(error)); */
 
-const promise_2 = fetch('https://jsonplaceholder.typicode.com/users')
+/* const promise_2 = fetch('https://jsonplaceholder.typicode.com/users')
     .then((resolve) => resolve.json());
 
 promise_2
     .then(
         function megjelenit(values) {
-            let tablazat = '<table><tr><th>Név</th><th>E-mail</th></tr>';
+            let tablazat = '<table class="table text-white"><tr class="table-warning"><th>Név</th><th>E-mail</th><th>Address</th></tr>';
             //console.log(values[0].name + ' ' + values[0].email);
-            tablazat += `<tr><td>${values[0].name}</td><td>${values[0].email}</td></tr>`;
+            values.forEach((value) => {
+                tablazat += `<tr><td class="bg-primary">${value.name}</td><td class="bg-warning">${value.email}</td><td  class="bg-info">${value.address.street}, ${value.address.city}</td></tr>`;
+            });
             tablazat += '</table>';
             document.getElementById('tablazat').innerHTML = tablazat;
         }
-    );
+    ); */
+
+async function placeholderAdatokMegjelenitese() {
+    const adatok = await fetch('https://jsonplaceholder.typicode.com/users');
+    const ertekek = await adatok.json();
+    
+    function megjelenit(values) {
+        let tablazat = '<table class="table text-white"><tr class="table-warning"><th>Név</th><th>E-mail</th><th>Address</th></tr>';
+        //console.log(values[0].name + ' ' + values[0].email);
+        values.forEach((value) => {
+            tablazat += `<tr><td class="bg-primary">${value.name}</td><td class="bg-warning">${value.email}</td><td  class="bg-info">${value.address.street}, ${value.address.city}</td></tr>`;
+        });
+        tablazat += '</table>';
+        document.getElementById('tablazat').innerHTML = tablazat;
+    }
+
+    megjelenit(ertekek);
+}
+
+placeholderAdatokMegjelenitese();

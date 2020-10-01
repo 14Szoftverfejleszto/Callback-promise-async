@@ -1,6 +1,6 @@
 'use strict';
 
-const posts = [
+/* const posts = [
     { 'title': 'Post One', 'body' : 'This is post one'},
     { 'title': 'Post Two', 'body' : 'This is post two'},
 ];
@@ -33,4 +33,20 @@ function createPost(post, callback_1, callback_2, callback_3) {
     }, 2000);
 }
 
-createPost({ 'title' : 'Post Three', 'body' : 'This is post three'}, modifyThirdElement, removeFirstElement, getPosts);
+createPost({ 'title' : 'Post Three', 'body' : 'This is post three'}, modifyThirdElement, removeFirstElement, getPosts); */
+
+function placeholderAdatokMegjelenitese(callback_1) {
+    callback_1();
+}
+
+function adatokLekerese(callback_2) {
+    const adatok = fetch('https://jsonplaceholder.typicode.com/users');
+    callback_2(adatok);
+}
+
+function adatokAtirasa(values) {
+    const ertekek = values.json();
+    console.log(ertekek);
+}
+
+placeholderAdatokMegjelenitese(adatokLekerese(adatokAtirasa));
